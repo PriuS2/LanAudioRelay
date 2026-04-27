@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanAudioRelay.Core", "src\LanAudioRelay.Core\LanAudioRelay.Core.csproj", "{2BE0A3A0-6B0B-4D30-A24B-A232766BA49B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanAudioRelay", "src\LanAudioRelay\LanAudioRelay.csproj", "{E5C4E5DB-DC4A-48D8-80D8-5590F218D541}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanAudioRelay.Tests", "tests\LanAudioRelay.Tests\LanAudioRelay.Tests.csproj", "{6C26F721-B7BC-46C3-BE0C-57F94BE06EA8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2BE0A3A0-6B0B-4D30-A24B-A232766BA49B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BE0A3A0-6B0B-4D30-A24B-A232766BA49B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BE0A3A0-6B0B-4D30-A24B-A232766BA49B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BE0A3A0-6B0B-4D30-A24B-A232766BA49B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5C4E5DB-DC4A-48D8-80D8-5590F218D541}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5C4E5DB-DC4A-48D8-80D8-5590F218D541}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5C4E5DB-DC4A-48D8-80D8-5590F218D541}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5C4E5DB-DC4A-48D8-80D8-5590F218D541}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C26F721-B7BC-46C3-BE0C-57F94BE06EA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C26F721-B7BC-46C3-BE0C-57F94BE06EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C26F721-B7BC-46C3-BE0C-57F94BE06EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C26F721-B7BC-46C3-BE0C-57F94BE06EA8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
