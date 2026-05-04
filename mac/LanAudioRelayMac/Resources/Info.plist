@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>ko</string>
+    <key>CFBundleExecutable</key>
+    <string>LanAudioRelayMac</string>
+    <key>CFBundleIdentifier</key>
+    <string>local.lanaudiorelay.mac</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>LAN Audio Relay</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>0.1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>14.0</string>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    <key>NSLocalNetworkUsageDescription</key>
+    <string>LAN 안에서 수신기를 찾고 오디오를 전송하기 위해 로컬 네트워크 접근이 필요합니다.</string>
+    <key>NSScreenCaptureDescription</key>
+    <string>Mac에서 재생 중인 시스템 오디오를 다른 PC로 전송하기 위해 화면 기록 권한이 필요합니다.</string>
+</dict>
+</plist>

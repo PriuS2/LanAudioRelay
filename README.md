@@ -25,6 +25,17 @@ dotnet publish .\src\LanAudioRelay\LanAudioRelay.csproj -c Release -r win-x64 --
 
 생성된 실행 파일은 `.\dist\LanAudioRelay-win-x64\LanAudioRelay.exe`입니다.
 
+## macOS
+
+Mac용 SwiftUI 앱은 `.\mac\LanAudioRelayMac`에 있습니다. Mac + Xcode 환경에서 빌드하세요.
+
+```bash
+cd mac/LanAudioRelayMac
+swift test
+swift build -c release
+./Scripts/package-app.sh
+```
+
 ## 사용 방법
 
 1. 수신 PC에서 앱을 열고 `Receiver` 탭의 `Start Receiver`를 누릅니다.
