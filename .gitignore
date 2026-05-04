@@ -15,6 +15,12 @@ Thumbs.db
 publish/
 *.nupkg
 
+# Local .NET SDK/cache for cross-platform builds
+.dotnet/
+.dotnet-home/
+.nuget/
+.dotnet-install.sh
+
 # Swift Package Manager
 .build/
 .swiftpm/

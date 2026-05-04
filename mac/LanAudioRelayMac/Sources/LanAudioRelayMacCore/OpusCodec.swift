@@ -26,16 +26,17 @@ public final class OpusFrameEncoder {
             throw ProtocolError.invalidPayloadLength
         }
 
-        var mutablePcm = pcm
+        let mutablePcm = pcm
         var output = [UInt8](repeating: 0, count: 1275)
+        let outputCapacity = output.count
         let encodedBytes = mutablePcm.withUnsafeBufferPointer { pcmBuffer in
             output.withUnsafeMutableBufferPointer { outputBuffer in
                 opus_encode(
                     encoder,
-                    pcmBuffer.baseAddress,
+                    pcmBuffer.baseAddress!,
                     Int32(AudioConstants.samplesPerFrame),
-                    outputBuffer.baseAddress,
-                    Int32(output.count)
+                    outputBuffer.baseAddress!,
+                    Int32(outputCapacity)
                 )
             }
         }
@@ -68,15 +69,19 @@ public final class OpusFrameDecoder {
     }
 
     public func decode(_ payload: Data) throws -> [Int16] {
-        var mutablePayload = [UInt8](payload)
+        guard !payload.isEmpty else {
+            throw ProtocolError.invalidPayloadLength
+        }
+
+        let mutablePayload = [UInt8](payload)
         var pcm = [Int16](repeating: 0, count: AudioConstants.pcmSamplesPerFrame)
         let decodedSamples = mutablePayload.withUnsafeBufferPointer { payloadBuffer in
             pcm.withUnsafeMutableBufferPointer { pcmBuffer in
                 opus_decode(
                     decoder,
-                    payloadBuffer.baseAddress,
+                    payloadBuffer.baseAddress!,
                     Int32(payload.count),
-                    pcmBuffer.baseAddress,
+                    pcmBuffer.baseAddress!,
                     Int32(AudioConstants.samplesPerFrame),
                     0
                 )

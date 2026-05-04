@@ -21,17 +21,18 @@ final class TCPLineConnection: @unchecked Sendable {
     }
 
     func start() async throws {
-        try await withCheckedThrowingContinuation { continuation in
-            var didResume = false
+        let resumeGate = ContinuationResumeGate()
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             connection.stateUpdateHandler = { state in
-                guard !didResume else { return }
                 switch state {
                 case .ready:
-                    didResume = true
-                    continuation.resume()
+                    if resumeGate.tryResume() {
+                        continuation.resume()
+                    }
                 case .failed(let error):
-                    didResume = true
-                    continuation.resume(throwing: error)
+                    if resumeGate.tryResume() {
+                        continuation.resume(throwing: error)
+                    }
                 default:
                     break
                 }
@@ -44,7 +45,7 @@ final class TCPLineConnection: @unchecked Sendable {
         var data = try encoder.encode(value)
         data.append(0x0a)
 
-        try await withCheckedThrowingContinuation { continuation in
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             connection.send(content: data, completion: .contentProcessed { error in
                 if let error {
                     continuation.resume(throwing: error)
@@ -81,7 +82,7 @@ final class TCPLineConnection: @unchecked Sendable {
     }
 
     private func receiveChunk() async throws -> Data {
-        try await withCheckedThrowingContinuation { continuation in
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Data, Error>) in
             connection.receive(minimumIncompleteLength: 1, maximumLength: 4096) { data, _, isComplete, error in
                 if let error {
                     continuation.resume(throwing: error)
@@ -98,5 +99,22 @@ final class TCPLineConnection: @unchecked Sendable {
                 continuation.resume(returning: Data())
             }
         }
+    }
+}
+
+private final class ContinuationResumeGate: @unchecked Sendable {
+    private let lock = NSLock()
+    private var didResume = false
+
+    func tryResume() -> Bool {
+        lock.lock()
+        defer { lock.unlock() }
+
+        guard !didResume else {
+            return false
+        }
+
+        didResume = true
+        return true
     }
 }

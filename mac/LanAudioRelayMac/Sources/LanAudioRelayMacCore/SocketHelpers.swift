@@ -76,13 +76,14 @@ enum SocketHelpers {
 
     static func receive(_ socketFd: Int32, maxBytes: Int = 4096) throws -> (Data, sockaddr_in) {
         var buffer = [UInt8](repeating: 0, count: maxBytes)
+        let bufferCount = buffer.count
         var remote = sockaddr_in()
         var remoteLength = socklen_t(MemoryLayout<sockaddr_in>.size)
 
         let read = buffer.withUnsafeMutableBytes { bufferPointer in
             withUnsafeMutablePointer(to: &remote) {
                 $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { remotePointer in
-                    recvfrom(socketFd, bufferPointer.baseAddress, buffer.count, 0, remotePointer, &remoteLength)
+                    recvfrom(socketFd, bufferPointer.baseAddress, bufferCount, 0, remotePointer, &remoteLength)
                 }
             }
         }
@@ -97,7 +98,7 @@ enum SocketHelpers {
     static func ipString(from address: sockaddr_in) -> String {
         var address = address.sin_addr
         var buffer = [CChar](repeating: 0, count: Int(INET_ADDRSTRLEN))
-        buffer.withUnsafeMutableBufferPointer { pointer in
+        _ = buffer.withUnsafeMutableBufferPointer { pointer in
             inet_ntop(AF_INET, &address, pointer.baseAddress, socklen_t(INET_ADDRSTRLEN))
         }
         return String(cString: buffer)
