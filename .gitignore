@@ -6,3 +6,27 @@ obj/
 *.suo
 TestResults/
 dist/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# .NET publish artifacts
+publish/
+*.nupkg
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Xcode
+DerivedData/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+
+# macOS app packaging
+*.app/
+*.app.zip
+*.dSYM/
