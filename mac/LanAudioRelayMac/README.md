@@ -4,7 +4,7 @@ Native SwiftUI macOS 14+ app that speaks the same LAN protocol as the Windows `L
 
 ## Build
 
-Open this folder on a Mac with Xcode 15+:
+From the repository root on a Mac with Xcode 15+:
 
 ```bash
 cd mac/LanAudioRelayMac
