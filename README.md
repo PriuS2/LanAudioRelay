@@ -2,6 +2,15 @@
 
 Windows 11용 WPF/.NET 앱과 macOS 14+용 SwiftUI 앱으로, 같은 LAN 안에서 시스템 오디오를 낮은 지연으로 전달합니다.
 
+## Release
+
+v0.9.0 릴리즈에서 Windows x64와 macOS 앱 패키지를 제공합니다.
+
+- [LanAudioRelay-win-x64-v0.9.0.zip](https://github.com/PriuS2/LanAudioRelay/releases/download/v0.9.0/LanAudioRelay-win-x64-v0.9.0.zip): Windows 11 x64 self-contained 빌드
+- [LanAudioRelayMac-v0.9.0.app.zip](https://github.com/PriuS2/LanAudioRelay/releases/download/v0.9.0/LanAudioRelayMac-v0.9.0.app.zip): macOS 14+ 앱 패키지
+
+전체 릴리즈 노트는 [GitHub Releases](https://github.com/PriuS2/LanAudioRelay/releases/tag/v0.9.0)에서 확인할 수 있습니다.
+
 ## Windows Build
 
 ```powershell
